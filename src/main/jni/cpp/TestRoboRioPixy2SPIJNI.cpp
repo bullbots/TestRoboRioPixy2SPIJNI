@@ -16,6 +16,12 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiInit(JNIEnv
    return;
 }
 
+JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetVersion(JNIEnv *env, jobject thisObj) {
+   std::cout << "Hello World from pixy2 spi get version" << std::endl;
+   pixy.version->print();
+   return;
+}
+
 // Implementation of the native method pixy2_spi_get_blocks()
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
    std::cout << "Hello World from pix2 spi get blocks" << std::endl;

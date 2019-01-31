@@ -14,6 +14,8 @@ extern "C" {
  */
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiInit(JNIEnv *, jobject);
 
+JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetVersion(JNIEnv *, jobject);
+
 /*
  * Class:     TestRoboRioPixy2SPIJNI
  * Method:    pixy2SpiGetBlocks

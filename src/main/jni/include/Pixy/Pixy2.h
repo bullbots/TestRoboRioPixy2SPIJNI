@@ -27,23 +27,25 @@ class Link2SPI
 public:
   Link2SPI() : spi(frc::SPI::Port::kOnboardCS0)
   {
-
+    dummyByte[0] = {0};
   }
 
   int8_t open(uint32_t arg)
   {
+    // Note: Original Arduino pixy2 SPI connections
     // SPI.begin();
     // SPI.beginTransaction(SPISettings(PIXY_SPI_CLOCKRATE, MSBFIRST, SPI_MODE3));
     spi.SetClockRate(PIXY_SPI_CLOCKRATE);
     spi.SetMSBFirst();
     spi.SetSampleDataOnTrailingEdge();
     spi.SetClockActiveLow();
-    spi.SetChipSelectActiveHigh();
+    spi.SetChipSelectActiveLow();
 	  return 0;
   }
 	
   void close()
   {
+    // Note: Original Arduino pixy2 SPI connections
     // SPI.endTransaction();
   }
     
@@ -54,8 +56,9 @@ public:
       *cs = 0;
     for (i=0; i<len; i++)
     {
+      // Note: Original Arduino pixy2 SPI connections
       // buf[i] = SPI.transfer(0x00);
-      spi.Transaction(0x00, &buf[i]);
+      spi.Transaction(0x00, &buf[i], 1);
       if (cs)
         *cs += buf[i];
     }
@@ -66,16 +69,16 @@ public:
   {
     uint8_t i;
     for (i=0; i<len; i++)
+      // Note: Original Arduino pixy2 SPI connections
       // SPI.transfer(buf[i]);
-      spi.Transaction(&buf[i]);
+      spi.Transaction(&buf[i], &dummyByte[0], 1);
     return len;
   }
 
 protected:
   frc::SPI spi;
-
+  uint8_t dummyByte[1];
 };
-
 
 typedef TPixy2<Link2SPI> Pixy2;
 

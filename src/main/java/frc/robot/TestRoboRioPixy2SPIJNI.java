@@ -8,6 +8,8 @@ public class TestRoboRioPixy2SPIJNI {
   
     // Declare an instance native method sayHello() which receives no parameter and returns void
     private native void pixy2SpiInit();
+
+    private native void pixy2SpiGetVersion();
     
     private native void pixy2SpiGetBlocks();
     // Test Driver
@@ -15,6 +17,7 @@ public class TestRoboRioPixy2SPIJNI {
       System.out.println("Hello from java!") ;
       TestRoboRioPixy2SPIJNI testRoboRioPixy2SPIJNI = new TestRoboRioPixy2SPIJNI();
       testRoboRioPixy2SPIJNI.pixy2SpiInit();
-      testRoboRioPixy2SPIJNI.pixy2SpiGetBlocks();
+      testRoboRioPixy2SPIJNI.pixy2SpiGetVersion();
+      // testRoboRioPixy2SPIJNI.pixy2SpiGetBlocks();
     }
  }

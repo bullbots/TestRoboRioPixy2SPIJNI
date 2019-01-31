@@ -204,7 +204,7 @@ template <class LinkType> int16_t TPixy2<LinkType>::getSync()
       if (j>=4)
       {
 #ifdef PIXY_DEBUG
-        printf("error: no response");
+        printf("error: no response\n");
 #endif		  
         return PIXY_RESULT_ERROR;
       }
