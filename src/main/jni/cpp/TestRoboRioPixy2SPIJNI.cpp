@@ -22,10 +22,22 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetVersion(
    return;
 }
 
+JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOn(JNIEnv *env, jobject thisObj) {
+   std::cout << "Hello World from pixy2 spi Lamp On" << std::endl;
+   pixy.setLamp(0x01, 0x00);
+   return;
+}
+
+JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
+   std::cout << "Hello World from pixy2 spi Lamp Off" << std::endl;
+   pixy.setLamp(0x00, 0x00);
+   return;
+}
+
 // Implementation of the native method pixy2_spi_get_blocks()
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
-   std::cout << "Hello World from pix2 spi get blocks" << std::endl;
-     // need multiple reads because of filtering
+   // std::cout << "Hello World from pix2 spi get blocks" << std::endl;
+   // need multiple reads because of filtering
    pixy.ccc.getBlocks();
    pixy.ccc.getBlocks();
    pixy.ccc.getBlocks();

@@ -10,6 +10,10 @@ public class TestRoboRioPixy2SPIJNI {
     private native void pixy2SpiInit();
 
     private native void pixy2SpiGetVersion();
+
+    private native void pixy2SpiLampOn();
+
+    private native void pixy2SpiLampOff();
     
     private native void pixy2SpiGetBlocks();
     // Test Driver
@@ -18,6 +22,16 @@ public class TestRoboRioPixy2SPIJNI {
       TestRoboRioPixy2SPIJNI testRoboRioPixy2SPIJNI = new TestRoboRioPixy2SPIJNI();
       testRoboRioPixy2SPIJNI.pixy2SpiInit();
       testRoboRioPixy2SPIJNI.pixy2SpiGetVersion();
-      // testRoboRioPixy2SPIJNI.pixy2SpiGetBlocks();
+      testRoboRioPixy2SPIJNI.pixy2SpiLampOn();
+      while (true) {
+         System.out.println("Getting blocks...");
+         testRoboRioPixy2SPIJNI.pixy2SpiGetBlocks();
+         try {
+            Thread.sleep(10);
+         } catch (InterruptedException e) {
+            e.printStackTrace();
+            break;
+         }
+      }
     }
  }
