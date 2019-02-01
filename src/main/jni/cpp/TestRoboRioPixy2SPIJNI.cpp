@@ -5,6 +5,7 @@
 
 #include <Pixy2.h>
 #include <stdio.h>
+#include <sstream>
 
 // This is the main Pixy object 
 Pixy2 pixy;
@@ -53,4 +54,23 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocks(J
       }
    }  
    return;
+}
+
+JNIEXPORT jstring JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocksString(JNIEnv *env, jobject thisObj) {
+
+   pixy.ccc.getBlocks();
+   pixy.ccc.getBlocks();
+   pixy.ccc.getBlocks();
+
+   std::stringstream ss;
+
+   if (pixy.ccc.numBlocks){
+      for (int i=0; i<pixy.ccc.numBlocks; ++i)
+      {
+         ss << "  block " << i << ": ";
+         ss << pixy.ccc.blocks[i].str();
+      }
+   }
+
+   return env->NewStringUTF(ss.str().c_str());
 }
