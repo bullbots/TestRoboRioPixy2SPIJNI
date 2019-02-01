@@ -15,7 +15,9 @@ public class TestRoboRioPixy2SPIJNI {
 
     private native void pixy2SpiLampOff();
     
-    private native String pixy2SpiGetBlocks();
+    private native void pixy2SpiGetBlocks();
+
+    private native String pixy2SpiGetBlocksString();
     // Test Driver
     public static void main(String[] args) {
       System.out.println("Hello from java!") ;
@@ -24,7 +26,8 @@ public class TestRoboRioPixy2SPIJNI {
       testRoboRioPixy2SPIJNI.pixy2SpiGetVersion();
       testRoboRioPixy2SPIJNI.pixy2SpiLampOn();
       while (true) {
-         String visionStuffs = testRoboRioPixy2SPIJNI.pixy2SpiGetBlocks();
+         String visionStuffs = testRoboRioPixy2SPIJNI.pixy2SpiGetBlocksString();
+         // System.out.println(visionStuffs);
          String[] visionParts = visionStuffs.split("\n");
          System.out.println(String.join(",", visionParts));
          

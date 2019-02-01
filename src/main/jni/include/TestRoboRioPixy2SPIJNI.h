@@ -25,7 +25,7 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOn(JNIE
 
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOff(JNIEnv *, jobject);
 
-JNIEXPORT jstring JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlockString(JNIEnv *, jobject);
+JNIEXPORT jstring JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocksString(JNIEnv *, jobject);
 
 /*
  * Class:     TestRoboRioPixy2SPIJNI
