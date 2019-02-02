@@ -67,8 +67,11 @@ JNIEXPORT jstring JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlock
    if (pixy.ccc.numBlocks){
       for (int i=0; i<pixy.ccc.numBlocks; ++i)
       {
-         ss << "  block " << i << ": ";
+         ss << "block " << i << " : ";
          ss << pixy.ccc.blocks[i].str();
+         if(i<pixy.ccc.numBlocks-1){
+            ss << std::endl;
+         }
       }
    }
 
