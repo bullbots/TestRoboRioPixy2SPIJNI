@@ -1,14 +1,13 @@
 plugins {
     id "java"
+    id "edu.wpi.first.GradleRIO" version "2019.2.1"
     id "cpp"
     id 'edu.wpi.first.GradleJni' version '0.3.1'
-    id "edu.wpi.first.GradleRIO" version "2019.2.1"
 }
-
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
-def MAIN_CLASS = "frc.robot.TestRoboRioPixy2SPIJNI"
+def ROBOT_MAIN_CLASS = "frc.robot.Main"
 
 // Define my targets (RoboRIO) and artifacts (deployable files)
 // This is added by GradleRIO's backing project EmbeddedTools.
@@ -36,10 +35,6 @@ deploy {
             targets << "roborio"
             directory = '/home/lvuser/deploy'
         }
-        // frcNativeLibraryArtifact('hello') {
-        //     targets << "roborio"
-        //     // file = file('build/libs/hello/shared/release/libhello.so')
-        // }
     }
 }
 
@@ -66,7 +61,7 @@ dependencies {
 // knows where to look for our Robot Class.
 jar {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(MAIN_CLASS)
+    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
 }
 
 model {
