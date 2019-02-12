@@ -26,7 +26,9 @@ public class Pixy2SpiJNI implements Runnable{
     private native void pixy2SpiGetBlocks();
 
     private native String pixy2SpiGetBlocksString();
+
     private static Block[] blocks;
+
     public static final ArrayBlockingQueue<Block[]> blocksBuffer = new ArrayBlockingQueue<>(2);
 
     private double m_expirationTime;

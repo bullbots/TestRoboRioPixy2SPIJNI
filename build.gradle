@@ -1,3 +1,6 @@
+import edu.wpi.first.gradlerio.frc.FRCPlugin
+import edu.wpi.first.toolchain.NativePlatforms
+
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2019.2.1"
@@ -35,6 +38,12 @@ deploy {
             targets << "roborio"
             directory = '/home/lvuser/deploy'
         }
+        nativeArtifact('pixy2_spi') {
+            targetPlatform = NativePlatforms.roborio
+            targets << "roborio"
+            directory = FRCPlugin.LIB_DEPLOY_DIR
+            buildType = 'release'
+        }
     }
 }
 
@@ -71,6 +80,11 @@ model {
             enableCheckTask true // Set to true to enable a JNI check task. This will search all generated JNI headers, and check to ensure their symbols exist in the native library
             javaCompileTasks << compileJava // set javaCompileTasks to any java compile tasks that contain your JNI classes. It is a list of tasks
             jniCrossCompileOptions << JniCrossCompileOptions('athena')
+
+            binaries.all {
+                cppCompiler.args '-g', '-D__LINUX__'
+            }
+            
             sources.cpp {
                 source {
                     srcDir 'src/main/jni/cpp'
