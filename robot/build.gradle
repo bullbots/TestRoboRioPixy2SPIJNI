@@ -1,12 +1,5 @@
 apply plugin: "edu.wpi.first.GradleRIO"
 
-// plugins {
-//     id "java"
-//     id "cpp"
-//     id "edu.wpi.first.GradleRIO" version "2019.3.2"
-//     id 'edu.wpi.first.GradleJni' version '0.4.1'
-// }
-
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 

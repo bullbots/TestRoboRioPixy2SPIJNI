@@ -1,7 +1,7 @@
 // Save as "TestRoboRioPixy2SPIJNI.cpp"
 #include <jni.h>        // JNI header provided by JDK
 #include <iostream>      // C Standard IO Header
-#include "Pixy2SpiJNI.h"   // Generated
+#include "pixy2_vision_Pixy2SpiJNI.h"   // Generated
 
 #include <Pixy2.h>
 
@@ -14,32 +14,31 @@
 Pixy2 pixy(frc::SPI::Port::kOnboardCS0);
 
 // Implementation of the native method pixy2SpiInit()
-JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiInit(JNIEnv *env, jobject thisObj) {
+JNIEXPORT void JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiInit(JNIEnv *env, jobject thisObj) {
    std::cout << "INFO: C++ Pixy2 SPI Init" << std::endl;
    pixy.init();
    return;
 }
 
-JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetVersion(JNIEnv *env, jobject thisObj) {
+JNIEXPORT void JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiGetVersion(JNIEnv *env, jobject thisObj) {
    std::cout << "INFO: C++ Pixy2 SPI GetVersion" << std::endl;
    pixy.version->print();
    return;
 }
 
-JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOn(JNIEnv *env, jobject thisObj) {
+JNIEXPORT void JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiLampOn(JNIEnv *env, jobject thisObj) {
    std::cout << "INFO: C++ Pixy2 SPI LampOn" << std::endl;
    pixy.setLamp(0x01, 0x00);
    return;
 }
 
-JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
+JNIEXPORT void JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
    std::cout << "INFO: C++ Pixy2 SPI LampOff" << std::endl;
    pixy.setLamp(0x00, 0x00);
    return;
 }
 
-JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
-   // std::cout << "Hello World from pix2 spi get blocks" << std::endl;
+JNIEXPORT void JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
    // need multiple reads because of filtering
    pixy.ccc.getBlocks();
    pixy.ccc.getBlocks();
@@ -58,7 +57,7 @@ JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiGetBlocks(JNIEn
    return;
 }
 
-JNIEXPORT jstring JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiGetBlocksString(JNIEnv *env, jobject thisObj) {
+JNIEXPORT jstring JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiGetBlocksString(JNIEnv *env, jobject thisObj) {
 
    pixy.ccc.getBlocks();
    pixy.ccc.getBlocks();

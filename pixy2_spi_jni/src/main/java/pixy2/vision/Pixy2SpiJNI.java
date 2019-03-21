@@ -1,5 +1,5 @@
 
-package frc.robot.vision;
+package pixy2.vision;
 
 import java.util.ArrayList;
 
@@ -9,8 +9,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 import edu.wpi.first.hal.NotifierJNI;
 import edu.wpi.first.wpilibj.RobotController;
 
-public class Pixy2SpiJNI implements Runnable{
-   
+public class Pixy2SpiJNI implements Runnable {
+
     static {
        System.loadLibrary("pixy2_spi");
     }

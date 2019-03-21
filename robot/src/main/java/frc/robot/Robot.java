@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.vision.Block;
-import frc.robot.vision.Pixy2SpiJNI;
+import pixy2.vision.Pixy2SpiJNI;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,12 +24,12 @@ import frc.robot.vision.Pixy2SpiJNI;
  * project.
  */
 public class Robot extends TimedRobot {
+  public static final Pixy2SpiJNI pixy2SpiJNI = new Pixy2SpiJNI();
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-  Pixy2SpiJNI pixy2SpiJNI = new Pixy2SpiJNI();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -37,10 +37,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    Thread pixy2thread = new Thread(pixy2SpiJNI);
-    pixy2thread.start();
+    System.out.println("Hello from robot");
+    Thread pixy2SpiJNIThread = new Thread(pixy2SpiJNI);
+    pixy2SpiJNIThread.setDaemon(true);
+    pixy2SpiJNIThread.start();
     m_oi = new OI();
-//    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -55,12 +57,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    Block[] blocks = pixy2SpiJNI.blocksBuffer.poll();
-    if(blocks != null){
-      for(Block b : blocks){
-        System.out.println(b.toString());
-      }
-    }
+    // Block[] blocks = pixy2USBJNI.blocksBuffer.poll();
+    // if (blocks != null) {
+    //   for (Block b : blocks) {
+    //     System.out.println(b.toString());
+    //   }
+    // }
   }
 
   /**
