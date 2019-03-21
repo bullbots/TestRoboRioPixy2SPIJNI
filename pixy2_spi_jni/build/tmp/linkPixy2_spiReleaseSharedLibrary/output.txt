@@ -1,0 +1,4 @@
+See file:///C:/Users/warren/FRC_2019_PROJECTS/TestRoboRioPixy2SPIJNI/pixy2_spi_jni/build/tmp/linkPixy2_spiReleaseSharedLibrary/output.txt for all output for linkPixy2_spiReleaseSharedLibrary.
+linking libpixy2_spi.so successful.
+
+Finished linkPixy2_spiReleaseSharedLibrary, see full log file:///C:/Users/warren/FRC_2019_PROJECTS/TestRoboRioPixy2SPIJNI/pixy2_spi_jni/build/tmp/linkPixy2_spiReleaseSharedLibrary/output.txt.

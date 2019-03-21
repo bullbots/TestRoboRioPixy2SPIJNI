@@ -1,0 +1,4 @@
+See file:///C:/Users/warren/FRC_2019_PROJECTS/TestRoboRioPixy2SPIJNI/pixy2_spi_jni/build/tmp/createPixy2_spiReleaseStaticLibrary/output.txt for all output for createPixy2_spiReleaseStaticLibrary.
+archiving libpixy2_spi.a successful.
+
+Finished createPixy2_spiReleaseStaticLibrary, see full log file:///C:/Users/warren/FRC_2019_PROJECTS/TestRoboRioPixy2SPIJNI/pixy2_spi_jni/build/tmp/createPixy2_spiReleaseStaticLibrary/output.txt.

@@ -23,3 +23,5 @@ pluginManagement {
         }
     }
 }
+
+include 'robot', 'pixy2_spi_jni'

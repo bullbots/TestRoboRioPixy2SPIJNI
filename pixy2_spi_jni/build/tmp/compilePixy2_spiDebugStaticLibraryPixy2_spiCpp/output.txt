@@ -1,0 +1,6 @@
+See file:///C:/Users/warren/FRC_2019_PROJECTS/TestRoboRioPixy2SPIJNI/pixy2_spi_jni/build/tmp/compilePixy2_spiDebugStaticLibraryPixy2_spiCpp/output.txt for all output for compilePixy2_spiDebugStaticLibraryPixy2_spiCpp.
+compiling util.cpp successful.
+
+compiling Pixy2SpiJNI.cpp successful.
+
+Finished compilePixy2_spiDebugStaticLibraryPixy2_spiCpp, see full log file:///C:/Users/warren/FRC_2019_PROJECTS/TestRoboRioPixy2SPIJNI/pixy2_spi_jni/build/tmp/compilePixy2_spiDebugStaticLibraryPixy2_spiCpp/output.txt.
