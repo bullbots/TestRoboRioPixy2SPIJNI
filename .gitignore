@@ -137,8 +137,8 @@ $RECYCLE.BIN/
 ### Gradle ###
 .gradle
 /build/
-# /robot/build/
-# /pixy2_spi_jni/build/
+/robot/build/
+/pixy2_spi_jni/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
