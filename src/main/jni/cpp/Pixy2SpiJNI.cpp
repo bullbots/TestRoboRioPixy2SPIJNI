@@ -1,7 +1,7 @@
 // Save as "TestRoboRioPixy2SPIJNI.cpp"
 #include <jni.h>        // JNI header provided by JDK
 #include <iostream>      // C Standard IO Header
-#include "TestRoboRioPixy2SPIJNI.h"   // Generated
+#include "Pixy2SpiJNI.h"   // Generated
 
 #include <Pixy2.h>
 
@@ -32,14 +32,12 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOn(JNIE
    return;
 }
 
-JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
-   std::cout << "INFO: C++ Pixy2 SPI LampOff" << std::endl;
+JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
    pixy.setLamp(0x00, 0x00);
-   return;
-}
 
-// Implementation of the native method pixy2_spi_get_blocks()
-JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
+
+   
+JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
    // std::cout << "Hello World from pix2 spi get blocks" << std::endl;
    // need multiple reads because of filtering
    pixy.ccc.getBlocks();
@@ -59,7 +57,7 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocks(J
    return;
 }
 
-JNIEXPORT jstring JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlocksString(JNIEnv *env, jobject thisObj) {
+JNIEXPORT jstring JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiGetBlocksString(JNIEnv *env, jobject thisObj) {
 
    pixy.ccc.getBlocks();
    pixy.ccc.getBlocks();
@@ -70,8 +68,11 @@ JNIEXPORT jstring JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetBlock
    if (pixy.ccc.numBlocks){
       for (int i=0; i<pixy.ccc.numBlocks; ++i)
       {
-         ss << "  block " << i << ": ";
+         ss << "block " << i << " : ";
          ss << pixy.ccc.blocks[i].str();
+         if(i<pixy.ccc.numBlocks-1){
+            ss << std::endl;
+         }
       }
    }
 
