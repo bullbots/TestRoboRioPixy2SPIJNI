@@ -10,6 +10,7 @@ import edu.wpi.first.hal.NotifierJNI;
 import edu.wpi.first.wpilibj.RobotController;
 
 public class Pixy2SpiJNI implements Runnable{
+   
     static {
        System.loadLibrary("pixy2_spi");
     }
