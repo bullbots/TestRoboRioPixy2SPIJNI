@@ -20,12 +20,12 @@
 #include "TPixy2.h"
 #include <frc/SPI.h>
 
-#define PIXY_SPI_CLOCKRATE       2000000
+#define PIXY_SPI_CLOCKRATE 2000000
 
 class Link2SPI
 {
 public:
-  Link2SPI() : spi(frc::SPI::Port::kOnboardCS0)
+  Link2SPI(frc::SPI::Port port) : spi(port)
   {
     dummyByte[0] = {0};
   }

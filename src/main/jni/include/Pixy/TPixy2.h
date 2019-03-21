@@ -59,6 +59,8 @@
 #include "Pixy2Line.h"
 #include "Pixy2Video.h"
 
+#include <frc/SPI.h>
+
 #include <string.h>
 
 struct Version
@@ -81,6 +83,7 @@ struct Version
 template <class LinkType> class TPixy2
 {
 public:
+  TPixy2(frc::SPI::Port);
   TPixy2();
   ~TPixy2(); 
 
@@ -126,7 +129,7 @@ private:
 };
 
 
-template <class LinkType> TPixy2<LinkType>::TPixy2() : ccc(this), line(this), video(this)
+template <class LinkType> TPixy2<LinkType>::TPixy2(frc::SPI::Port port) : m_link(port), ccc(this), line(this), video(this)
 {
   // allocate buffer space for send/receive
   m_buf = (uint8_t *)malloc(PIXY_BUFFERSIZE);
@@ -134,6 +137,11 @@ template <class LinkType> TPixy2<LinkType>::TPixy2() : ccc(this), line(this), vi
   m_bufPayload = m_buf + PIXY_SEND_HEADER_SIZE;
   frameWidth = frameHeight = 0;
   version = NULL;
+}
+
+template <class LinkType> TPixy2<LinkType>::TPixy2() : TPixy2(frc::SPI::Port::kOnboardCS0)
+{
+  // Delegated constructor
 }
 
 template <class LinkType> TPixy2<LinkType>::~TPixy2()

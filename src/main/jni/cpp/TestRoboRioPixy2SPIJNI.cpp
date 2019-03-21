@@ -4,33 +4,36 @@
 #include "TestRoboRioPixy2SPIJNI.h"   // Generated
 
 #include <Pixy2.h>
+
+#include <frc/SPI.h>
+
 #include <stdio.h>
 #include <sstream>
 
 // This is the main Pixy object 
-Pixy2 pixy;
+Pixy2 pixy(frc::SPI::Port::kOnboardCS0);
 
 // Implementation of the native method pixy2SpiInit()
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiInit(JNIEnv *env, jobject thisObj) {
-   std::cout << "Hello World from pixy2 spi init" << std::endl;
+   std::cout << "INFO: C++ Pixy2 SPI Init" << std::endl;
    pixy.init();
    return;
 }
 
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiGetVersion(JNIEnv *env, jobject thisObj) {
-   std::cout << "Hello World from pixy2 spi get version" << std::endl;
+   std::cout << "INFO: C++ Pixy2 SPI GetVersion" << std::endl;
    pixy.version->print();
    return;
 }
 
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOn(JNIEnv *env, jobject thisObj) {
-   std::cout << "Hello World from pixy2 spi Lamp On" << std::endl;
+   std::cout << "INFO: C++ Pixy2 SPI LampOn" << std::endl;
    pixy.setLamp(0x01, 0x00);
    return;
 }
 
 JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
-   std::cout << "Hello World from pixy2 spi Lamp Off" << std::endl;
+   std::cout << "INFO: C++ Pixy2 SPI LampOff" << std::endl;
    pixy.setLamp(0x00, 0x00);
    return;
 }

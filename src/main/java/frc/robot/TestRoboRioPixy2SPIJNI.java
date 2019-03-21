@@ -2,6 +2,7 @@
 package frc.robot;
 
 public class TestRoboRioPixy2SPIJNI {
+   
     static {
        System.loadLibrary("pixy2_spi");
     }
@@ -20,14 +21,12 @@ public class TestRoboRioPixy2SPIJNI {
     private native String pixy2SpiGetBlocksString();
     // Test Driver
     public static void main(String[] args) {
-      System.out.println("Hello from java!") ;
       TestRoboRioPixy2SPIJNI testRoboRioPixy2SPIJNI = new TestRoboRioPixy2SPIJNI();
       testRoboRioPixy2SPIJNI.pixy2SpiInit();
       testRoboRioPixy2SPIJNI.pixy2SpiGetVersion();
       testRoboRioPixy2SPIJNI.pixy2SpiLampOn();
       while (true) {
          String visionStuffs = testRoboRioPixy2SPIJNI.pixy2SpiGetBlocksString();
-         // System.out.println(visionStuffs);
          String[] visionParts = visionStuffs.split("\n");
          System.out.println(String.join(",", visionParts));
          
