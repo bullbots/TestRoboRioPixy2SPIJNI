@@ -121,5 +121,4 @@ public class Pixy2SpiJNI implements Runnable{
      private void updateAlarm(){
          NotifierJNI.updateNotifierAlarm(m_notifier, (long) (m_expirationTime * 1e6));
      }
-   
 }

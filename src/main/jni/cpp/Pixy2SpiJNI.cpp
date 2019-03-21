@@ -33,10 +33,11 @@ JNIEXPORT void JNICALL Java_frc_robot_TestRoboRioPixy2SPIJNI_pixy2SpiLampOn(JNIE
 }
 
 JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiLampOff(JNIEnv *env, jobject thisObj) {
+   std::cout << "INFO: C++ Pixy2 SPI LampOff" << std::endl;
    pixy.setLamp(0x00, 0x00);
+   return;
+}
 
-
-   
 JNIEXPORT void JNICALL Java_frc_robot_vision_Pixy2SpiJNI_pixy2SpiGetBlocks(JNIEnv *env, jobject thisObj) {
    // std::cout << "Hello World from pix2 spi get blocks" << std::endl;
    // need multiple reads because of filtering
