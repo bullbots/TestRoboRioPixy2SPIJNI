@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import pixy2.vision.Block;
 import pixy2.vision.Pixy2SpiJNI;
 
 /**
@@ -37,10 +38,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    System.out.println("Hello from robot");
-    Thread pixy2SpiJNIThread = new Thread(pixy2SpiJNI);
-    pixy2SpiJNIThread.setDaemon(true);
-    pixy2SpiJNIThread.start();
+    System.out.println("INFO: robotInit");
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -57,12 +55,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    // Block[] blocks = pixy2USBJNI.blocksBuffer.poll();
-    // if (blocks != null) {
-    //   for (Block b : blocks) {
-    //     System.out.println(b.toString());
-    //   }
-    // }
+    Block[][] blocks = Pixy2SpiJNI.blocksBuffer.poll();
+    if (blocks != null) {
+      for (Block[] pixyblocks: blocks) {
+        for (Block b : pixyblocks) {
+          System.out.println(b.toString());
+        }
+      }
+    }
   }
 
   /**

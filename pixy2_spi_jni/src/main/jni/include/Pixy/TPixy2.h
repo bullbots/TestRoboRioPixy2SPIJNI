@@ -20,7 +20,7 @@
 #define _TPIXY2_H
 
 // uncomment to turn on debug prints to console
-#define PIXY_DEBUG
+// #define PIXY_DEBUG
 
 #define PIXY_DEFAULT_ARGVAL                  0x80000000
 #define PIXY_BUFFERSIZE                      0x104
@@ -85,6 +85,7 @@ template <class LinkType> class TPixy2
 public:
   TPixy2(frc::SPI::Port);
   TPixy2();
+  TPixy2(TPixy2&& rhs);
   ~TPixy2(); 
 
   int8_t init(uint32_t arg=PIXY_DEFAULT_ARGVAL);
@@ -142,6 +143,15 @@ template <class LinkType> TPixy2<LinkType>::TPixy2(frc::SPI::Port port) : m_link
 template <class LinkType> TPixy2<LinkType>::TPixy2() : TPixy2(frc::SPI::Port::kOnboardCS0)
 {
   // Delegated constructor
+}
+
+template <class LinkType> TPixy2<LinkType>::TPixy2(TPixy2&& rhs)
+  : m_link(std::move(rhs.m_link)),
+    ccc(std::move(rhs.ccc)),
+    line(std::move(rhs.line)),
+    video(std::move(rhs.video))
+{
+  // Move constructor
 }
 
 template <class LinkType> TPixy2<LinkType>::~TPixy2()
