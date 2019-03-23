@@ -151,7 +151,7 @@ template <class LinkType> TPixy2<LinkType>::TPixy2(TPixy2&& rhs)
     line(std::move(rhs.line)),
     video(std::move(rhs.video))
 {
-  // Move constructor
+  // move constructor
 }
 
 template <class LinkType> TPixy2<LinkType>::~TPixy2()

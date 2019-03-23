@@ -16,7 +16,7 @@ public class Pixy2SpiJNI {
       System.loadLibrary("pixy2_spi");
    }
 
-   private final static int NUM_DISTANCE_SENSORS = 2;
+   private final static int NUM_DISTANCE_SENSORS = 1;
   
    private Thread m_acquire_task;
    private static Block[] blocks;
@@ -65,22 +65,28 @@ public class Pixy2SpiJNI {
          System.out.println("INFO: running loopfunc");
 
          String[] visionStuffs = pixy2SpiJNI.pixy2SpiGetBlocksStrings();
-         // for (String visionStr : visionStuffs) {
-         //    if (visionStr == null) {
-         //       System.out.println("INFO: blocks string was null");
-         //    } else {
-         //       System.out.println(visionStr);
-         //    }
-         // }
 
-         // Check all block strings for content
-         for (String visionStr : visionStuffs) {
-            if (visionStr.equals("")) {
-               return;
-            }
+         if (visionStuffs == null) {
+            System.out.println("INFO: blocks string was null");
+            return;
          }
 
+         for (String visionStr : visionStuffs) {
+            System.out.println(visionStr);
+         }
+
+         // Check all block strings for content
          int visionStrIndex = 0;
+         for (String visionStr : visionStuffs) {
+            if (visionStr.equals("")) {
+               System.out.println(String.format("INFO: blocks string was empty: %d", visionStrIndex));
+               return;
+            }
+            System.out.println(visionStr);
+            visionStrIndex++;
+         }
+
+         visionStrIndex = 0;
          Block[][] blocksArray = new Block[NUM_DISTANCE_SENSORS][0];
          for (String visionStr : visionStuffs) {
             String[] visionParts = visionStr.split("\n");
