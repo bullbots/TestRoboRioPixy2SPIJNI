@@ -10,11 +10,10 @@
 #include <stdio.h>
 #include <sstream>
 
-#define NUM_SENSORS 1
+#define NUM_SENSORS 2
 
 // This are the main Pixy objects
-// Pixy2 pixy2_list[] = {Pixy2(frc::SPI::Port::kOnboardCS0), Pixy2(frc::SPI::Port::kOnboardCS1)};
-Pixy2 pixy2_list[] = {Pixy2(frc::SPI::Port::kOnboardCS1)};
+Pixy2 pixy2_list[] = {Pixy2(frc::SPI::Port::kOnboardCS0), Pixy2(frc::SPI::Port::kOnboardCS1)};
 
 // Implementation of the native method pixy2SpiInit()
 JNIEXPORT jboolean JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiInit(JNIEnv *env, jobject thisObj) {
@@ -81,15 +80,10 @@ JNIEXPORT jobjectArray JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiGetBlocksSt
 
    int pixyIndex = 0;
    for (Pixy2& pixy : pixy2_list) {
-      // frc::SPI& spi = pixy.GetSPI();
 
-      auto& link = pixy.m_link;
-
-      frc::SPI& spi = link.GetSPI();
-
-      HAL_SPIPort& port = spi.m_port;
-
-      std::cout << "INFO: Made it here: " << pixyIndex << std::endl;
+#ifdef PIXY_DEBUG
+      std::cout << "DEBUG: Pixy Index: " << pixyIndex << std::endl;
+#endif
       std::stringstream ss;
 
       pixy.ccc.getBlocks();
@@ -108,7 +102,9 @@ JNIEXPORT jobjectArray JNICALL Java_pixy2_vision_Pixy2SpiJNI_pixy2SpiGetBlocksSt
       }
 
       std::string blocks = ss.str();
+#ifdef PIXY_DEBUG
       std::cout << "INFO: Blocks: \"" << blocks << "\"\n";
+#endif
       env->SetObjectArrayElement(ret, pixyIndex++, env->NewStringUTF(blocks.c_str()));
    }
 

@@ -16,7 +16,7 @@ public class Pixy2SpiJNI {
       System.loadLibrary("pixy2_spi");
    }
 
-   private final static int NUM_DISTANCE_SENSORS = 1;
+   private final static int NUM_DISTANCE_SENSORS = 2;
   
    private Thread m_acquire_task;
    private static Block[] blocks;

@@ -75,8 +75,6 @@ public:
     return len;
   }
 
-  inline frc::SPI& GetSPI() { return spi; }
-
 protected:
   frc::SPI spi;
   uint8_t dummyByte[1];
