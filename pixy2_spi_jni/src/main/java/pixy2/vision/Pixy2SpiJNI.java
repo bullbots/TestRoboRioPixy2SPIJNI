@@ -46,7 +46,7 @@ public class Pixy2SpiJNI {
 
             while(true) {
                long curTime = NotifierJNI.waitForNotifierAlarm(m_notifier);
-               if(curTime == 0){
+               if(curTime == 0) {
                   break;
                }
       
@@ -71,28 +71,26 @@ public class Pixy2SpiJNI {
             return;
          }
 
-         for (String visionStr : visionStuffs) {
-            System.out.println(visionStr);
-         }
+         // Uncomment to check all block strings for content
+         // int visionStrIndex = 0;
+         // for (String visionStr : visionStuffs) {
+         //    if (visionStr.equals("")) {
+         //       System.out.println(String.format("INFO: blocks string was empty: %d", visionStrIndex));
+         //       return;
+         //    }
+         //    System.out.println(String.format("INFO: blocks string: %d", visionStrIndex));
+         //    System.out.println(visionStr);
+         //    visionStrIndex++;
+         // }
 
-         // Check all block strings for content
-         int visionStrIndex = 0;
-         for (String visionStr : visionStuffs) {
-            if (visionStr.equals("")) {
-               System.out.println(String.format("INFO: blocks string was empty: %d", visionStrIndex));
-               return;
-            }
-            System.out.println(visionStr);
-            visionStrIndex++;
-         }
-
-         visionStrIndex = 0;
          Block[][] blocksArray = new Block[NUM_DISTANCE_SENSORS][0];
+
+         int visionStuffsIndex = 0;
          for (String visionStr : visionStuffs) {
             String[] visionParts = visionStr.split("\n");
             blocks = new Block[visionParts.length];
-            int arrayIndex = 0;
 
+            int visionPartsIndex = 0;
             for (String s : visionParts) {
               
                if(!s.isEmpty() && !s.isBlank() && !s.equals(null) && !s.equals("")) {
@@ -116,13 +114,15 @@ public class Pixy2SpiJNI {
                      sc.next();
                      int age = sc.nextInt();
       
-                     blocks[arrayIndex++] = new Block(sig, x, y, width, height, index, age);
-                     blocksArray[visionStrIndex] = blocks;
+                     blocks[visionPartsIndex++] = new Block(sig, x, y, width, height, index, age);
+                     blocksArray[visionStuffsIndex] = blocks;
                   } catch (Exception e){
                      e.printStackTrace();
                   }
                }
             }
+
+            visionStuffsIndex++;
          }
 
          synchronized(blocksBuffer) {

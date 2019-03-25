@@ -59,7 +59,8 @@ public class Robot extends TimedRobot {
     if (blocks != null) {
       int blocksArray = 0;
       for (Block[] pixyblocks: blocks) {
-        System.out.println(String.format("INFO: Blocks from %d", blocksArray++));
+        // Uncomment for blocks header information
+        // System.out.println(String.format("INFO: Blocks from %d", blocksArray++));
         for (Block b : pixyblocks) {
           System.out.println(b.toString());
         }
